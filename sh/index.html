@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <title>神话永恒</title>
+    <script src="js/size.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <div id="main">
+    </div>
+    <!-- 公用部分开始 -->
+    <input type="hidden" value="{$appId}" id="appId">
+    <input type="hidden" value="{$timestamp}" id="timestamp">
+    <input type="hidden" value="{$nonceStr}" id="nonceStr">
+    <input type="hidden" value="{$signature}" id="signature">
+    <script src="http://download.shengli.com/jquery/jquery-2.2.3.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <!-- 公用部分结束 -->
+    <script src="/dist/bundle.js"></script>
+</body>
+
+</html>

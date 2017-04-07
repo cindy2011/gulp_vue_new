@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <title>神话永恒</title>
+    <script src="js/size.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body class="listbg">
+    <div id="main">
+        <div class="fixbg">
+            <dl>
+                <dt class="icon fl"></dt>
+                <dd class="fl">
+                    <h1>神话永恒</h1>
+                    <p>炫酷魔幻巅峰巨作</p>
+                </dd>
+            </dl>
+            <a href="javascript:void(0)" class="book pa" @click="showBook"></a>
+        </div>
+        <div class="curpos">当前位置 ：<a href="/index">官网首页</a> > <a href="">媒体专区</a><a href="javascript:void(0)" class="goback">>> 返回首页</a></div>
+        <div class="newslist">
+            <div class="banner-list banner2">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"> <img src="images/banner.png" alt=""></div>
+                    <div class="swiper-slide"> <img src="images/banner.png" alt=""></div>
+                    <div class="swiper-slide"> <img src="images/banner.png" alt=""></div>
+                    <div class="swiper-slide"> <img src="images/banner.png" alt=""></div>
+                </div>
+                <div class="bannericon"></div>
+            </div>
+            <div class="mediazq">
+                <ul class="mediatitle">
+                    <li v-for="item in mediaTitle" v-bind:class="{ 'active':mediatitleli==item.title}" v-html="item.title" @click="mediaShowList(item.id,item.title)"></li>
+                </ul>
+            </div>
+            <div class="newslist-con">
+                <ul>
+                    <li v-for="item in NymediaList"><a v-bind:href="item.url"><span v-html="item.title"></span><i v-html="item.date"></i></a></li>                   
+                </ul>
+            </div>
+        </div>
+        <div class="gotoTop">
+            返回顶部
+        </div>
+        <div class="layoutbg" v-show="layoutArr.layoutbg" v-cloak>
+            <div class="layout" v-show="layoutArr.layout" v-cloak>
+                <a href="javascript:void(0)" class="close fr" @click="closeLayout"></a>
+                <!-- 预约 -->
+                <div class="layout-book" v-show="layoutArr.layoutBook" v-cloak>
+                    <h2>手机预约</h2>
+                    <div id="rd1">
+                        <my-select v-bind:select-data="selectData" v-on:selchange="selectComChange" ref="selectCom"></my-select>
+                    </div>
+                    <input type="text" placeholder="输入手机号预约公测礼包" v-model="phonenum">
+                    <a href="javascript:void(0)" class="bookbtn" @click="submitInfo"></a>
+                </div>
+                <!-- 成功 -->
+                <div class="layout-tips" v-show="layoutArr.layoutTips" v-cloak>
+                    <h2 class="book-icon"><i></i>预约成功</h2>
+                    <p>您已成功领取预约礼包！</p>
+                    <div class="line"></div>
+                    <p class="tips"><i></i>关注官方微信，获取神界第一手资讯</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <template id="mySelect">
+        <div class="select-box select-version" @click.stop="showSelectUl"><i class="select-text" v-html="selectText"></i> <span></span>
+            <ul v-show="selectUl">
+                <li v-for="item in selectData" @click.stop="hideSelectUl(item.value,item.text)" v-html="item.text"></li>
+            </ul>
+        </div>
+    </template>
+    <input type="hidden" value="{$appId}" id="appId">
+    <input type="hidden" value="{$timestamp}" id="timestamp">
+    <input type="hidden" value="{$nonceStr}" id="nonceStr">
+    <input type="hidden" value="{$signature}" id="signature">
+    <script src="http://download.shengli.com/jquery/jquery-2.2.3.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-resource.min.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
